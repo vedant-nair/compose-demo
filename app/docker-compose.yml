@@ -1,0 +1,26 @@
+services:
+  app: 
+    image: "node:18-alpine"  # Added quotes around the image
+    command: sh -c "yarn install && yarn run dev"
+    restart: always  # Added restart policy
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+  mysql:
+    image: mysql:8.0
+    restart: always  # Added restart policy
+    volumes:
+      - todo-mysql-data:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+volumes:
+  todo-mysql-data:
+
