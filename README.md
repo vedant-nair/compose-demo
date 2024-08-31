@@ -1,4 +1,4 @@
 # compose-demo
 Learning how to use Compose and deploying with Miru
 
-hello
+# trying miru app for the first time with this repo!
